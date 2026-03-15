@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry Salon | Salon Kecantikan Terbaik di Sarijadi Bandung</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --pink-primary: #e91e63;
+            --pink-light: #fce4ec;
+            --gold-primary: #d4af37;
+            --dark: #2d3436;
+            --light: #ffffff;
+            --gray: #f4f4f4;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 80px 10%;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-pink {
+            background-color: var(--pink-primary);
+            color: white;
+        }
+
+        .btn-pink:hover {
+            background-color: #c2185b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--pink-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink-primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO --- */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        /* --- LAYANAN --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--pink-primary);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-bottom: 4px solid var(--gold-primary);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--pink-primary);
+            margin-bottom: 15px;
+        }
+
+        .price {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin: 10px 0;
+        }
+
+        /* --- PROMO & QRIS --- */
+        #promo {
+            background-color: var(--pink-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .promo-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .qris-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .qris-img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover {
+            filter: brightness(70%);
+        }
+
+        /* --- TESTIMONI --- */
+        #testimoni {
+            background: var(--gray);
+        }
+
+        .testi-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        .testi-card {
+            min-width: 300px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .stars {
+            color: #f1c40f;
+            margin-bottom: 10px;
+        }
+
+        /* --- BOOKING FORM --- */
+        #booking {
+            background: white;
+        }
+
+        .form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 10% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--pink-primary);
+        }
+
+        /* --- FLOATING WA --- */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Sederhana: sembunyikan link di mobile, fokus ke CTA */
+            }
+            .menu-toggle {
+                display: block;
+            }
+            #home h1 {
+                font-size: 2.2rem;
+            }
+            section {
+                padding: 60px 5%;
+            }
+            .form-wrapper {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Jerry Salon</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Booking</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+        </ul>
+        <a href="#booking" class="btn btn-pink">Book Now</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home">
+        <h1>Cantik Maksimal, Harga Minimal</h1>
+        <p>Salon Kecantikan Terbaik di Sarijadi Bandung. Kami hadir untuk memberikan perawatan terbaik untuk rambut dan kecantikan Anda.</p>
+        <a href="#layanan" class="btn btn-pink">Lihat Layanan</a>
+    </section>
+
+    <!-- LAYANAN SECTION -->
+    <section id="layanan">
+        <div class="section-title">
+            <h2>Layanan Kami</h2>
+            <p>Pilih perawatan yang sesuai dengan keinginan Anda</p>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-cut"></i>
+                <h3>Potong Rambut</h3>
+                <p>Potong rambut stylish sesuai bentuk wajah.</p>
+                <span class="price">Rp 80.000</span>
+                <a href="#booking" class="btn btn-pink">Pesan</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-magic"></i>
+                <h3>Coloring</h3>
+                <p>Pewarnaan rambut dengan produk premium.</p>
+                <span class="price">Mulai Rp 300.000</span>
+                <a href="#booking" class="btn btn-pink">Pesan</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-spa"></i>
+                <h3>Hair Spa / Creambath</h3>
+                <p>Nutrisi mendalam untuk rambut sehat berkilau.</p>
+                <span class="price">Rp 150.000</span>
+                <a href="#booking" class="btn btn-pink">Pesan</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-sparkles"></i>
+                <h3>Smoothing</h3>
+                <p>Rambut lurus, lembut, dan mudah diatur.</p>
+                <span class="price">Mulai Rp 400.000</span>
+                <a href="#booking" class="btn btn-pink">Pesan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMO & QRIS -->
+    <section id="promo">
+        <div class="promo-text">
+            <h2>Promo Spesial! 🎁</h2>
+            <p>Dapatkan <strong>Diskon 10%</strong> untuk booking pertama Anda dengan melakukan deposit via QRIS sebesar Rp 50.000 sebagai tanda jadi.</p>
+            <br>
+            <ul style="list-style: circle; padding-left: 20px;">
+                <li>Scan QRIS di samping</li>
+                <li>Bayar Rp 50.000</li>
+                <li>Lampirkan bukti saat datang/chat WA</li>
+            </ul>
+        </div>
+        <div class="qris-box">
+            <h4>Scan Disini untuk Deposit</h4>
+            <!-- Placeholder QRIS Image -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=JerrySalonDeposit" alt="QRIS Jerry Salon" class="qris-img">
+            <p><small>Menerima: GoPay, OVO, Dana, LinkAja</small></p>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery">
+        <div class="section-title">
+            <h2>Gallery</h2>
+            <p>Hasil karya terbaik para stylist Jerry Salon</p>
+        </div>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=500&q=80" alt="Gallery 1">
+            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=500&q=80" alt="Gallery 2">
+            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=500&q=80" alt="Gallery 3">
+            <img src="https://images.unsplash.com/photo-1605497746444-ac966376f8bd?auto=format&fit=crop&w=500&q=80" alt="Gallery 4">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80" alt="Gallery 5">
+            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=500&q=80" alt="Gallery 6">
+        </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section id="testimoni">
+        <div class="section-title">
+            <h2>Apa Kata Mereka?</h2>
+            <p>Rating Google: 4.4 ★ dari 57 ulasan</p>
+        </div>
+        <div class="testi-container">
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p>"Potongan rambutnya rapi banget, stylistnya ramah dan ngerti apa yang saya mau. Highly recommended!"</p>
+                <br><strong>- Sarah K.</strong>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p>"Warna rambutnya keluar banget dan gak bikin rambut rusak. Tempatnya juga nyaman di Sarijadi."</p>
+                <br><strong>- Budi Santoso</strong>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p>"Smoothingnya awet, udah 3 bulan masih bagus. Pelayanan Jerry Salon emang juara."</p>
+                <br><strong>- Linda W.</strong>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★☆</div>
+                <p>"Harganya affordable untuk kualitas sebagus ini di Bandung."</p>
+                <br><strong>- Rani</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING FORM SECTION -->
+    <section id="booking">
+        <div class="section-title">
+            <h2>Booking Sekarang</h2>
+            <p>Isi formulir untuk reservasi jadwal Anda</p>
+        </div>
+        <div class="form-wrapper">
+            <form id="waForm">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="name" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <label>Pilih Layanan</label>
+                    <select id="service" required>
+                        <option value="">-- Pilih Layanan --</option>
+                        <option value="Potong Rambut">Potong Rambut (Rp 80rb)</option>
+                        <option value="Coloring">Coloring (Rp 300rb+)</option>
+                        <option value="Hair Spa">Hair Spa (Rp 150rb)</option>
+                        <option value="Smoothing">Smoothing (Rp 400rb+)</option>
+                    </select>
+                </div>
+                <div class="form-group" style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <label>Tanggal</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Jam</label>
+                        <select id="time" required>
+                            <option value="09:00">09:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="19:00">19:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nomor WhatsApp</label>
+                    <input type="tel" id="whatsapp" placeholder="0812xxxx" required>
+                </div>
+                <button type="submit" class="btn btn-pink" style="width: 100%;">Kirim Booking via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="tentang">
+        <div class="footer-content">
+            <div>
+                <h3>Jerry Salon</h3>
+                <p>Jl. Sarimanah 1 No.172 Blok 9, Sarijadi,<br>Kec. Sukasari, Kota Bandung, Jawa Barat 40151</p>
+                <br>
+                <p><strong>Jam Operasional:</strong><br>Senin - Minggu: 09:00 - 20:00</p>
+            </div>
+            <div>
+                <h3>Hubungi Kami</h3>
+                <p><i class="fab fa-whatsapp"></i> 0838-6581-7255</p>
+                <br>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="map-container">
+                <h3>Lokasi Kami</h3>
+                <!-- Google Maps Embed (Sarijadi area) -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.056345689128!2d107.5759187!3d-6.8838385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6973e6d296d%3A0x6b8d43c8d927c44!2sJl.%20Sarimanah%2C%20Sarijadi%2C%20Kec.%20Sukasari%2C%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div style="text-align: center; border-top: 1px solid #555; padding-top: 20px;">
+            <p>&copy; 2024 Jerry Salon Bandung. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WA BUTTON -->
+    <a href="https://wa.me/6283865817255" class="floating-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Handle Form Booking
+        document.getElementById('waForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ambil data form
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+
+            // Nomor tujuan (ganti dengan nomor salon)
+            const adminPhone = "6283865817255";
+
+            // Template pesan
+            const message = `Halo Jerry Salon, saya mau booking layanan:%0A%0A` +
+                            `*Nama:* ${name}%0A` +
+                            `*Layanan:* ${service}%0A` +
+                            `*Tanggal:* ${date}%0A` +
+                            `*Jam:* ${time}%0A` +
+                            `*No. WA:* ${whatsapp}%0A%0A` +
+                            `Saya ingin konfirmasi jadwal tersebut. Terima kasih.`;
+
+            // Redirect ke WhatsApp
+            window.open(`https://wa.me/${adminPhone}?text=${message}`, '_blank');
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '10px 10%';
+                nav.style.background = 'rgba(255,255,255,0.95)';
+            } else {
+                nav.style.padding = '15px 10%';
+                nav.style.background = 'white';
+            }
+        });
+
+        // Smooth Scroll untuk link navigasi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
