@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-pink: #EC4899;
+  --color-brand-gold: #D4AF37;
+  --color-brand-bg: #F9FAFB;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-gray-900 font-sans;
+  }
+}
+
+/* Custom styles for datepicker to match theme */
+.react-datepicker {
+  @apply border-none shadow-xl rounded-2xl overflow-hidden !font-sans;
+}
+.react-datepicker__header {
+  @apply bg-brand-pink border-none pt-4;
+}
+.react-datepicker__current-month, .react-datepicker__day-name {
+  @apply text-white;
+}
+.react-datepicker__day--selected {
+  @apply bg-brand-pink !rounded-full;
+}
+.react-datepicker__day:hover {
+  @apply bg-pink-100 rounded-full;
+}
